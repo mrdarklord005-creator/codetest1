@@ -8,7 +8,7 @@
     <div class="card" id="card2">
       <span class="icon material-icons">emoji_events</span>
       <div class="number" id="number2">3,641</div>
-      <div class="message">ผู้ชนะวันนี้</div>
+      <div class="message">ผู้ชนะวันนี้1111</div>
     </div>
     <div class="card" id="card3">
       <span class="icon material-icons">attach_money</span>
