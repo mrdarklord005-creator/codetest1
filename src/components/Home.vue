@@ -3,7 +3,7 @@
     <img class="img-logo" :src="require('@/assets/mercy-logo-f.png')" alt="Background Image"/>
     <div>    
       <span class="text1">เว็บตรงแท้ อันดับ 1</span>
-      <br><b class="text2">การันตีผู้ใช้งานจริงนับล้านยูสเซอร์ ลูกค้าใหม่ เพิ่มอัตราการชนะ ทันที !!</b>
+      <br><b class="text2">✨การันตีผู้ใช้งานจริงนับล้านยูสเซอร์ ลูกค้าใหม่ เพิ่มอัตราการชนะ ทันที !!</b>
     </div>
     <div class="button-container">
     <a href="https://lin.ee/knMX628" class="custom-button1">
@@ -187,7 +187,7 @@ export default {
     ];
 
     function generateRandomData() {
-      const amounts = ["1,000", "2,000", "5,000", "6,000", "7,000", "8,000", "15,000", "1,500", "1,300", "1,800", "20,000", "35,000", "89,000", "3,320", "11,000", "15,000", "33,200", "12,300", "11,100", "175,000", "35,000", "88,800", "20,200", "31,100", "22,200", "12,300", "1,100"];
+      const amounts = ["1,000", "2,000", "5,000", "6,000", "7,000", "8,000", "15,000", "1,500", "1,300", "1,800", "20,000", "15,000", "29,000", "3,320", "15,000", "15,000", "3,200", "2,300", "11,100", "13,000", "35,000", "50,800", "20,200", "31,100", "22,200", "12,300", "1,100"];
       const randomAmountIndex = Math.floor(Math.random() * amounts.length);
       const randomBankIndex = Math.floor(Math.random() * bankLogos.length);
       const randomDigits = Math.floor(Math.random() * 100).toString().padStart(2, '0');
