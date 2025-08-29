@@ -6,64 +6,76 @@
       <br><b class="text2">การันตีผู้ใช้งานจริงนับล้านยูสเซอร์ ลูกค้าใหม่ เพิ่มอัตราการชนะ ทันที !!</b>
     </div>
     <div class="button-container">
-        <button class="custom-button1">
+    <a href="https://lin.ee/knMX628" class="custom-button1">
         <i class="fas fa-user-plus"></i>  <!-- ไอคอนสมัครสมาชิก -->
         สมัครสมาชิก
-      </button>
-       <button class="custom-button2">
+    </a>
+    <a href="https://lin.ee/knMX628" class="custom-button2">
         <i class="fas fa-comments"></i>  <!-- ไอคอนติดต่อแอดมิน -->
         ติดต่อแอดมิน
-      </button>
-    </div> 
+    </a>
+</div>
     <div class="rank-payment">
         <span class="text3">🏆 อันดับการถอน</span>
     </div> 
     <div class="container2" id="container">
     <!-- การ์ดจะถูกเพิ่มที่นี่โดย JavaScript -->
   </div>
-        <span class="text4">🎮 เกมฮิต</span>
+        <span class="text4">🔥 เปอร์เซ็นต์เกมแตกสูง</span>
         <div class="card-container">
     <!-- Card 1 -->
     <div class="card">
     <div class="card-description">
-      <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')" />
+      <img class="img-game1"/>
       <!-- เพิ่มข้อความ "มาแรง" ที่มุมขวาบน -->
       <div class="badge">HOT</div>
+      <div class="chance-status"><b>🔥โอกาส 87.68%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount1 }}</b></div>
     </div>
   </div>
     
     <div class="card">
       <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <img class="img-game2"/>
         <div class="badge">HOT</div>
+        <div class="chance-status"><b>🔥โอกาส 91.05%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount2 }}</b></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <img class="img-game3" />
         <div class="badge">HOT</div>
+        <div class="chance-status"><b>🔥โอกาส 89.68%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount3 }}</b></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <img class="img-game4"/>
         <div class="badge">HOT</div>
+        <div class="chance-status"><b>🔥โอกาส 85.56%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount4 }}</b></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <img class="img-game5"/>
         <div class="badge">HOT</div>
+        <div class="chance-status"><b>🔥โอกาส 92.11%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount5 }}</b></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <img class="img-game6" />
         <div class="badge">HOT</div>
+        <div class="chance-status"><b>🔥โอกาส 90.18%</b></div>
+      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount6 }}</b></div>
       </div>
     </div>
   </div>
@@ -93,6 +105,12 @@ export default {
   data() {
     return {
       currentIndex: 0,
+      onlineCount1: "958",
+      onlineCount2: "2,348",
+      onlineCount3: "1,125",
+      onlineCount4: "893",
+      onlineCount5: "3,250",
+      onlineCount6: "1,112",
       slides: [
         { src: 'photo_6228624588875613744_y.jpg', alt: 'Image 1' },
         { src: 'photo_6228624588875613745_y.jpg', alt: 'Image 2' },
@@ -101,6 +119,35 @@ export default {
     };
   },
   methods: {
+    updateOnlineCount() {
+      setInterval(() => {
+        // แปลงค่ากลับเป็นตัวเลขก่อน
+        let count1 = parseInt(this.onlineCount1.replace(/,/g, '')) || 0;
+        let count2 = parseInt(this.onlineCount2.replace(/,/g, '')) || 0;
+        let count3 = parseInt(this.onlineCount3.replace(/,/g, '')) || 0;
+        let count4 = parseInt(this.onlineCount4.replace(/,/g, '')) || 0;
+        let count5 = parseInt(this.onlineCount5.replace(/,/g, '')) || 0;
+        let count6 = parseInt(this.onlineCount6.replace(/,/g, '')) || 0;
+
+        // สุ่มตัวเลขเพิ่มหรือลบ
+        const randomChange = Math.random() > 0.5 ? 1 : -1;
+        count1 += randomChange * Math.floor(Math.random() * 10);
+        count2 += randomChange * Math.floor(Math.random() * 10);
+        count3 += randomChange * Math.floor(Math.random() * 10);
+        count4 += randomChange * Math.floor(Math.random() * 10);
+        count5 += randomChange * Math.floor(Math.random() * 10);
+        count6 += randomChange * Math.floor(Math.random() * 10);
+
+        // แปลงตัวเลขกลับเป็น string ที่มีการคั่นด้วย , (เช่น 1,000)
+        this.onlineCount1 = count1.toLocaleString();
+        this.onlineCount2 = count2.toLocaleString();
+        this.onlineCount3 = count3.toLocaleString();
+        this.onlineCount4 = count4.toLocaleString();
+        this.onlineCount5 = count5.toLocaleString();
+        this.onlineCount6 = count6.toLocaleString();
+
+    }, 3000); // อัปเดตทุกๆ 3 วินาที
+  },
     nextSlide() {
     if (this.slides && this.slides.length > 0) {  // ตรวจสอบว่า slides ไม่เป็น undefined และมีค่า
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
@@ -118,6 +165,8 @@ export default {
   }
   },
   mounted() {
+    this.updateOnlineCount();
+
     const bankLogos = [
       "BAAC.png", "BAY.png", "BBL.png", 
       "GSB.png", "KBANK.png", 
@@ -241,6 +290,10 @@ body {
   flex-wrap: wrap; /* ให้ปุ่มเปลี่ยนบรรทัดเมื่อจอเล็ก */
   margin-bottom: 3.25rem;
 }
+
+.button-container a {
+    text-decoration: none; /* เอาเส้นใต้ */
+  }
 
 /* ปุ่มสมัครสมาชิก */
 .custom-button1 {
@@ -379,7 +432,7 @@ body {
     opacity: 1; /* ปกติ */
   }
   50% {
-    opacity: 0.5; /* กระพริบลดความทึบ */
+    opacity: 0.7; /* กระพริบลดความทึบ */
   }
   100% {
     opacity: 1; /* ปกติ */
@@ -538,6 +591,7 @@ body {
         border-radius: 15px; /* Optional: rounded corners */
         border: 1px solid gold; /* เส้นขอบสีทอง */
         cursor: pointer;
+        opacity: 0.9;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -568,10 +622,87 @@ body {
     background-color: #d9534f; /* สีแดงเข้มเมื่อ hover */
   }
 
-    .img-game {
-      width: 100%; /* Make image fill full width of the card */
-      height: 100%; /* Make image fill full height of the card */
-      object-fit: cover; /* Maintain aspect ratio and cover the area */
+    .online-status {
+      width: 100%;
+      position: absolute;
+      bottom: 0; /* อยู่ที่ด้านล่างสุด */
+      left: 50%; /* จัดตำแหน่งแนวนอนให้ตรงกลาง */
+      transform: translateX(-50%); /* ปรับตำแหน่งให้ข้อความอยู่ตรงกลาง */
+      color: #ffffff; /* เปลี่ยนเป็นสีเขียว */
+      font-weight: bold;
+      font-size: 1.25rem;
+      padding: 10px 0;
+      text-shadow: 2px 2px 4px rgba(255, 252, 49, 0.5);
+      background-color: transparent; /* ไม่ให้มีพื้นหลัง */
+      transition: color 0.3s ease; /* เพิ่มการเปลี่ยนสีเมื่อ hover */
+    }
+
+    
+.chance-status {
+   width: 100%;
+  position: absolute;
+  bottom: 15%; /* อยู่ที่ด้านล่างสุด */
+  left: 50%;
+  transform: translateX(-50%); /* จัดให้ตรงกลาง */
+  color: rgb(255, 227, 67); /* สีแดง */
+  font-weight: bold;
+  font-size: 1.35rem;
+  text-shadow: 2px 2px 4px rgba(255, 252, 49, 0.5);
+  animation: blink 0.7s infinite; /* เรียกใช้งาน animation */
+}
+
+    .img-game1 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game1-2i91UZ_G.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
+    }
+
+    .img-game2 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game2-BQgt78Ze.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
+    }
+
+    .img-game3 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game3-DzUyclZQ.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
+    }
+
+    .img-game4 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game4-ZuWgylAs.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
+    }
+
+    .img-game5 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game5-5Qse-RS2.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
+    }
+
+    .img-game6 {
+      width: 100%; /* ให้ภาพเต็มความกว้าง */
+      height: 100%; /* ให้ภาพเต็มความสูง */
+      object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game6-CUu9n32g.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background-size: cover; /* ครอบภาพเต็มพื้นที่ */
+      background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
 
     /* Card Title */
@@ -614,9 +745,11 @@ body {
     .slider-container {
       position: relative;
       width: 100%;
-      max-width: 800px; /* ปรับตามความต้องการ */
+      max-width: 600px; /* ปรับตามความต้องการ */
+      height: 60%;
       margin: auto;
       margin-top: 2.25rem;
+      margin-bottom: 2.25rem;
       overflow: hidden;
       border-radius: 15px;
       border: 2px solid #FFD700;
@@ -630,7 +763,7 @@ body {
 
     .slide {
       min-width: 100%;
-      height: 400px;
+      height: 60%;
       position: relative;
     }
 
