@@ -44,10 +44,10 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/src/assets/gold4.png'); 
+  background-image: url('/src/assets/gold3.png'); 
   background-size: cover;
   background-position: center;
-  filter: blur(1px); 
+  filter: blur(8px); 
   z-index: -1;
 }
 
@@ -59,4 +59,5 @@ body {
   overflow-y: auto; /* ให้สามารถเลื่อนแนวตั้งได้ */
   height: 100%;
 }
+
 </style>

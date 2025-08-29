@@ -21,48 +21,68 @@
     <div class="container2" id="container">
     <!-- การ์ดจะถูกเพิ่มที่นี่โดย JavaScript -->
   </div>
-        <span class="text4">🎮 เกมกำลังเป็นที่นิยม ขณะนี้</span>
+        <span class="text4">🎮 เกมฮิต</span>
         <div class="card-container">
     <!-- Card 1 -->
     <div class="card">
-      <div class="card-description">
-        <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
-      </div>
+    <div class="card-description">
+      <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')" />
+      <!-- เพิ่มข้อความ "มาแรง" ที่มุมขวาบน -->
+      <div class="badge">HOT</div>
     </div>
+  </div>
     
     <div class="card">
       <div class="card-description">
         <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <div class="badge">HOT</div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
         <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <div class="badge">HOT</div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
         <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <div class="badge">HOT</div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
         <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <div class="badge">HOT</div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-description">
         <img class="img-game" :src="require('@/assets/game1-2i91UZ_G.jpg')"/>
+        <div class="badge">HOT</div>
       </div>
     </div>
   </div>
 
-  <div class="banner">
-
+  <div class="slider-container">
+    <div class="slider" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+      <div v-for="(slide, index) in slides" :key="index" class="slide">
+        <img :src="require(`@/assets/${slide.src}`)" :alt="slide.alt" />
+      </div>
+    </div>
+    <!-- Golden Dots -->
+    <div class="dots-container">
+      <div
+        v-for="(slide, index) in slides"
+        :key="index"
+        :class="['dot', { active: currentIndex === index }]"
+        @click="goToSlide(index)"
+      ></div>
+    </div>
   </div>
   </div>
 </template>
@@ -70,6 +90,33 @@
 <script>
 export default {
   name: "StatsCards",
+  data() {
+    return {
+      currentIndex: 0,
+      slides: [
+        { src: 'photo_6228624588875613744_y.jpg', alt: 'Image 1' },
+        { src: 'photo_6228624588875613745_y.jpg', alt: 'Image 2' },
+        { src: 'certi.jpg', alt: 'Image 3' }
+      ]
+    };
+  },
+  methods: {
+    nextSlide() {
+    if (this.slides && this.slides.length > 0) {  // ตรวจสอบว่า slides ไม่เป็น undefined และมีค่า
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    }
+  },
+  prevSlide() {
+    if (this.slides && this.slides.length > 0) {  // ตรวจสอบว่า slides ไม่เป็น undefined และมีค่า
+      this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+    }
+  },
+  goToSlide(index) {
+    if (this.slides && this.slides.length > 0) {  // ตรวจสอบว่า slides ไม่เป็น undefined และมีค่า
+      this.currentIndex = index;
+    }
+  }
+  },
   mounted() {
     const bankLogos = [
       "BAAC.png", "BAY.png", "BBL.png", 
@@ -170,6 +217,8 @@ export default {
         addCard(isLatest);
       }
     }
+
+    setInterval(this.nextSlide, 3000);
 
     initializeCards();
     setInterval(() => addCard(true), 5000);
@@ -484,7 +533,7 @@ body {
     .card {
         position: relative; /* For better control of positioning */
         width: 100%; /* Make the card full-width */
-        height: 300px; /* Adjust the height as needed */
+        min-height: 300px;
         overflow: hidden; /* Hide any overflow content */
         border-radius: 15px; /* Optional: rounded corners */
         border: 1px solid gold; /* เส้นขอบสีทอง */
@@ -497,6 +546,27 @@ body {
       transform: translateY(-10px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
+
+    .badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  background-color: red; /* พื้นหลังสีแดง */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 14px; /* ขนาดฟอนต์ */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* เงาเบา ๆ เพื่อให้ข้อความดูเด่น */
+  transition: background-color 0.3s ease; /* เพิ่มการเปลี่ยนสีเมื่อ hover */
+  
+  /* การกระพริบ */
+  animation: blink 1.5s infinite alternate;
+}
+
+  .badge:hover {
+    background-color: #d9534f; /* สีแดงเข้มเมื่อ hover */
+  }
 
     .img-game {
       width: 100%; /* Make image fill full width of the card */
@@ -525,12 +595,71 @@ body {
       .card-container {
         grid-template-columns: repeat(2, 1fr); /* 2 cards in one row */
       }
+      .card {
+        min-height: 220px;
+    }
+     .card-container {
+      gap: 15px;
+      padding: 1px;
+      width: 100%;
+    }
     }
 
-    @media (max-width: 480px) {
+    /* @media (max-width: 480px) {
       .card-container {
-        grid-template-columns: 1fr; /* 1 card in one row */
+        grid-template-columns: 1fr; 
       }
+    } */
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px; /* ปรับตามความต้องการ */
+      margin: auto;
+      margin-top: 2.25rem;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 2px solid #FFD700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
     }
 
+    .slider {
+      display: flex;
+      transition: transform 1s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 400px;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .dots-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #FFD700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: #FFCC00;
+    }
 </style>
