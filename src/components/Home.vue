@@ -15,6 +15,13 @@
         ติดต่อแอดมิน
     </a>
 </div>
+
+    <div class="online-all">
+  <div class="user-online-status">
+    <i class="fas fa-circle online-icon"></i>
+    <span class="online-count">ออนไลน์ <span class="online-num" ref="onlineCountAll">{{ onlineCountAll }}</span> คน</span>
+  </div>
+</div>
     <div class="rank-payment">
         <span class="text3">🏆 อันดับการถอน</span>
     </div> 
@@ -31,7 +38,7 @@
           <!-- เพิ่มข้อความ "มาแรง" ที่มุมขวาบน -->
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 87.68%</b></div>
-          <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount1 }}</b></div>
+          <div class="online-status"><b ref="onlineCount1">🟢ออนไลน์ {{ onlineCount1 }}</b></div>
         </div>
     </a>
   </div>
@@ -42,7 +49,7 @@
           <img class="img-game2"/>
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 91.05%</b></div>
-        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount2 }}</b></div>
+        <div class="online-status"><b ref="onlineCount2">🟢ออนไลน์ {{ onlineCount2 }}</b></div>
         </div>
       </a>
     </div>
@@ -53,7 +60,7 @@
           <img class="img-game3" />
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 89.68%</b></div>
-        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount3 }}</b></div>
+        <div class="online-status"><b ref="onlineCount3">🟢ออนไลน์ {{ onlineCount3 }}</b></div>
         </div>
       </a>
     </div>
@@ -64,7 +71,7 @@
           <img class="img-game4"/>
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 85.56%</b></div>
-        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount4 }}</b></div>
+        <div class="online-status"><b ref="onlineCount4">🟢ออนไลน์ {{ onlineCount4 }}</b></div>
         </div>
       </a>
     </div>
@@ -75,7 +82,7 @@
           <img class="img-game5"/>
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 92.11%</b></div>
-        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount5 }}</b></div>
+        <div class="online-status"><b ref="onlineCount5">🟢ออนไลน์ {{ onlineCount5 }}</b></div>
         </div>
         </a>
     </div>
@@ -86,7 +93,7 @@
           <img class="img-game6" />
           <div class="badge">HOT</div>
           <div class="chance-status"><b>🔥โอกาส 90.18%</b></div>
-        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount6 }}</b></div>
+        <div class="online-status"><b ref="onlineCount6">🟢ออนไลน์ {{ onlineCount6 }}</b></div>
         </div>
       </a>
     </div>
@@ -123,6 +130,7 @@ export default {
       onlineCount4: "893",
       onlineCount5: "3,250",
       onlineCount6: "1,112",
+      onlineCountAll: "189,631",
       slides: [
         { src: 'photo_6228624588875613744_y.jpg', alt: 'Image 1' },
         { src: 'photo_6228624588875613745_y.jpg', alt: 'Image 2' },
@@ -131,6 +139,27 @@ export default {
     };
   },
   methods: {
+     animateNumber(refName, startValue, endValue, callback) {
+      let currentValue = startValue;
+      const step = Math.max(1, Math.ceil((endValue - startValue) / 20));
+
+      // ใช้ Vue.nextTick เพื่อให้มั่นใจว่า DOM ถูกเรนเดอร์แล้ว
+      this.$nextTick(() => {
+        const element = this.$refs[refName];
+
+        if (element) {
+          const interval = setInterval(() => {
+            currentValue += step;
+            if (currentValue >= endValue) {
+              clearInterval(interval);
+              currentValue = endValue;
+              if (callback) callback();
+            }
+            element.textContent = currentValue.toLocaleString();
+          }, 100);
+        }
+      });
+    },
     updateOnlineCount() {
       setInterval(() => {
         // แปลงค่ากลับเป็นตัวเลขก่อน
@@ -140,6 +169,7 @@ export default {
         let count4 = parseInt(this.onlineCount4.replace(/,/g, '')) || 0;
         let count5 = parseInt(this.onlineCount5.replace(/,/g, '')) || 0;
         let count6 = parseInt(this.onlineCount6.replace(/,/g, '')) || 0;
+        let countAll = parseInt(this.onlineCountAll.replace(/,/g, '')) || 0;
 
         // สุ่มตัวเลขเพิ่มหรือลบ
         const randomChange = Math.random() > 0.5 ? 1 : -1;
@@ -149,14 +179,21 @@ export default {
         count4 += randomChange * Math.floor(Math.random() * 10);
         count5 += randomChange * Math.floor(Math.random() * 10);
         count6 += randomChange * Math.floor(Math.random() * 10);
+        countAll += randomChange * Math.floor(Math.random() * 10);
 
-        // แปลงตัวเลขกลับเป็น string ที่มีการคั่นด้วย , (เช่น 1,000)
+        
+        // ใช้ animateNumber เพื่ออัปเดตค่าตัวเลข
         this.onlineCount1 = count1.toLocaleString();
         this.onlineCount2 = count2.toLocaleString();
         this.onlineCount3 = count3.toLocaleString();
         this.onlineCount4 = count4.toLocaleString();
         this.onlineCount5 = count5.toLocaleString();
         this.onlineCount6 = count6.toLocaleString();
+
+        this.animateNumber('onlineCountAll', parseInt(this.onlineCountAll.replace(/,/g, '')) || 0, countAll, () => {
+          this.onlineCountAll = countAll.toLocaleString();
+        });
+
 
     }, 3000); // อัปเดตทุกๆ 3 วินาที
   },
@@ -291,6 +328,56 @@ export default {
 body {
   font-family: Arial, sans-serif;
   background-color: #111;
+}
+
+.online-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 20px auto;
+}
+
+/* สไตล์ของ Online Status */
+.user-online-status {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid gold; /* ขอบสีเขียว */
+  border-radius: 30px; /* ให้มุมโค้ง */
+  padding: 10px 30px;
+  font-size: 16px;
+  color: #ffffff; /* สีเขียว */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* เงาเบา */
+  background-color: rgba(18, 34, 41, 0.3);
+}
+
+/* ไอคอนจุดสีเขียว */
+.online-icon {
+  font-size: 15px;
+  color: #28a745; /* สีเขียว */
+  margin-right: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* ขนาดเริ่มต้น */
+    opacity: 1; /* ปกติ */
+  }
+  50% {
+    transform: scale(0.5); /* ขยายขนาด */
+    opacity: 0.7; /* ลดความทึบ */
+  }
+  100% {
+    transform: scale(1); /* กลับสู่ขนาดเดิม */
+    opacity: 1; /* กลับความทึบ */
+  }
+}
+
+.online-num{
+  color: gold;
+  font-weight: bold;
 }
 
 /* คอนเทนเนอร์ของปุ่มทั้งสอง */
