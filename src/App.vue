@@ -60,4 +60,11 @@ body {
   height: 100%;
 }
 
+@media (max-width: 480px) {
+ #app::before {
+   background-size: 150%; /* ซูมเข้า */
+  
+}
+}
+
 </style>

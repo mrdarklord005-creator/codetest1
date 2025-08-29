@@ -25,58 +25,70 @@
         <div class="card-container">
     <!-- Card 1 -->
     <div class="card">
-    <div class="card-description">
-      <img class="img-game1"/>
-      <!-- เพิ่มข้อความ "มาแรง" ที่มุมขวาบน -->
-      <div class="badge">HOT</div>
-      <div class="chance-status"><b>🔥โอกาส 87.68%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount1 }}</b></div>
-    </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game1"/>
+          <!-- เพิ่มข้อความ "มาแรง" ที่มุมขวาบน -->
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 87.68%</b></div>
+          <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount1 }}</b></div>
+        </div>
+    </a>
   </div>
     
     <div class="card">
-      <div class="card-description">
-        <img class="img-game2"/>
-        <div class="badge">HOT</div>
-        <div class="chance-status"><b>🔥โอกาส 91.05%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount2 }}</b></div>
-      </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game2"/>
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 91.05%</b></div>
+        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount2 }}</b></div>
+        </div>
+      </a>
     </div>
 
     <div class="card">
-      <div class="card-description">
-        <img class="img-game3" />
-        <div class="badge">HOT</div>
-        <div class="chance-status"><b>🔥โอกาส 89.68%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount3 }}</b></div>
-      </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game3" />
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 89.68%</b></div>
+        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount3 }}</b></div>
+        </div>
+      </a>
     </div>
 
     <div class="card">
-      <div class="card-description">
-        <img class="img-game4"/>
-        <div class="badge">HOT</div>
-        <div class="chance-status"><b>🔥โอกาส 85.56%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount4 }}</b></div>
-      </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game4"/>
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 85.56%</b></div>
+        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount4 }}</b></div>
+        </div>
+      </a>
     </div>
 
     <div class="card">
-      <div class="card-description">
-        <img class="img-game5"/>
-        <div class="badge">HOT</div>
-        <div class="chance-status"><b>🔥โอกาส 92.11%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount5 }}</b></div>
-      </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game5"/>
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 92.11%</b></div>
+        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount5 }}</b></div>
+        </div>
+        </a>
     </div>
 
     <div class="card">
-      <div class="card-description">
-        <img class="img-game6" />
-        <div class="badge">HOT</div>
-        <div class="chance-status"><b>🔥โอกาส 90.18%</b></div>
-      <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount6 }}</b></div>
-      </div>
+      <a href="https://lin.ee/knMX628">
+        <div class="card-description">
+          <img class="img-game6" />
+          <div class="badge">HOT</div>
+          <div class="chance-status"><b>🔥โอกาส 90.18%</b></div>
+        <div class="online-status"><b>🟢ออนไลน์ {{ onlineCount6 }}</b></div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -736,11 +748,15 @@ body {
     }
     }
 
-    /* @media (max-width: 480px) {
-      .card-container {
-        grid-template-columns: 1fr; 
+    @media (max-width: 480px) {
+      .online-status {
+      font-size: 1.1rem;
+    }
+    
+      .chance-status {
+        font-size: 1.1rem;
       }
-    } */
+    }
 
     .slider-container {
       position: relative;
