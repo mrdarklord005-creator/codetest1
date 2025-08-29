@@ -811,4 +811,5 @@ body {
     .dot.active {
       background-color: #FFCC00;
     }
+    
 </style>
