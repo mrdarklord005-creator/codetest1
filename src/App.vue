@@ -24,6 +24,7 @@ export default {
    box-sizing: border-box;
   text-align: center;
   justify-content: center;
+  padding: 10px;
 }
 
 #app {

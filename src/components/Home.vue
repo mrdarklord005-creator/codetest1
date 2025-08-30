@@ -23,6 +23,15 @@
   </div>
 </div>
     <div class="rank-payment">
+        <span class="text3">👑 อันดับแจ็กพอตแตก</span>
+    </div> 
+    <div style="width: 100%; display: flex; justify-content: center; align-items: center;">
+      <div class="ranking-container" id="rankingContainer">
+          <!-- การ์ดจะถูกเพิ่มที่นี่โดย JavaScript -->
+      </div>
+    </div>  
+
+    <div class="rank-payment">
         <span class="text3">🏆 อันดับการถอน</span>
     </div> 
     <div class="container2" id="container">
@@ -135,10 +144,47 @@ export default {
         { src: 'photo_6228624588875613744_y.jpg', alt: 'Image 1' },
         { src: 'photo_6228624588875613745_y.jpg', alt: 'Image 2' },
         { src: 'certi.jpg', alt: 'Image 3' }
-      ]
+      ],
+      topUsersData : [
+      { userName: "rosaa01xx", amount: "150,000", timestamp: "29/08/2023 14:30" },
+      { userName: "rosab89xx", amount: "130,500", timestamp: "29/08/2023 13:45" },
+      { userName: "rosae11xx", amount: "95,200", timestamp: "29/08/2023 12:50" },
+      { userName: "rosad04xx", amount: "83,000", timestamp: "29/08/2023 11:30" },
+      { userName: "rosae87xx", amount: "82,000", timestamp: "29/08/2023 10:10" },
+      { userName: "rosae35xx", amount: "78,000", timestamp: "29/08/2023 10:10" },
+    ]
     };
   },
   methods: {
+    createRankingCard(user, rank) {
+      const rankingContainer = document.getElementById("rankingContainer");
+
+      const card = document.createElement("div");
+      card.classList.add("ranking-card");
+
+      const speedClasses = ['fast-wave', 'medium-wave', 'slow-wave'];
+      const selectedSpeedClass = speedClasses[Math.floor(Math.random() * speedClasses.length)];
+      card.classList.add(selectedSpeedClass);
+
+      card.innerHTML = `
+        <div class="card-details">
+          <div class="info-section">
+            <div class="user-name">ยูส: ${user.userName}</div>
+            <div class="user-transaction">ยอดถอน:  <span class="amount">${user.amount} </span></div>
+            <div class="user-transaction">เวลา: ${user.timestamp}</div>
+          </div>
+        </div>
+        <div class="rank-info" data-rank="${rank}">
+          <!-- จะแสดงหมายเลขอันดับที่นี่ -->
+        </div>
+      `;
+
+      rankingContainer.appendChild(card);
+
+      if (rankingContainer.children.length > 6) {
+        rankingContainer.removeChild(rankingContainer.firstElementChild);
+      }
+    },
      animateNumber(refName, startValue, endValue, callback) {
       let currentValue = startValue;
       const step = Math.max(1, Math.ceil((endValue - startValue) / 20));
@@ -214,6 +260,10 @@ export default {
   }
   },
   mounted() {
+     this.topUsersData.forEach((user, index) => {
+      this.createRankingCard(user, index + 1);
+    });
+
     this.updateOnlineCount();
 
     const bankLogos = [
@@ -504,6 +554,7 @@ body {
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
+  margin-top: 2.25rem;
   margin-bottom: 1.5rem;
   animation: blink 1s infinite alternate; /* ทำให้กระพริบ */
   animation-delay: 2s;
@@ -754,7 +805,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game1-2i91UZ_G.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009692_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -763,7 +814,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game2-BQgt78Ze.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009702_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -772,7 +823,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game3-DzUyclZQ.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009694_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -781,7 +832,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game4-ZuWgylAs.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009695_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -790,7 +841,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game5-5Qse-RS2.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009696_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -799,7 +850,7 @@ body {
       width: 100%; /* ให้ภาพเต็มความกว้าง */
       height: 100%; /* ให้ภาพเต็มความสูง */
       object-fit: cover; /* รักษาสัดส่วนและครอบพื้นที่ */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/game6-CUu9n32g.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('@/assets/photo_6165509241302009697_y.jpg'); /* เพิ่มกราเดียนต์ที่มีความทึบที่ด้านล่าง */
       background-size: cover; /* ครอบภาพเต็มพื้นที่ */
       background-position: center center; /* จัดตำแหน่งภาพให้อยู่กลาง */
     }
@@ -899,4 +950,94 @@ body {
       background-color: #FFCC00;
     }
     
+    .ranking-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      padding: 10px;
+      background-color: rgba(18, 34, 41, 0.3);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 800px; /* ความกว้างสูงสุด */
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.7);
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    .ranking-card {
+      padding: 10px 15px;
+      background-color: rgba(18, 34, 41, 1);
+      border-radius: 8px;
+      border: 0.5px solid #FFD700;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      opacity: 0;
+      animation: slideInCard 0.5s ease-out forwards;
+      position: relative;
+    }
+
+    .ranking-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 215, 0, 0.2) 50%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      animation: shimmerWave 3s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ranking-card.fast-wave::before { animation-duration: 2s; }
+    .ranking-card.medium-wave::before { animation-duration: 3s; }
+    .ranking-card.slow-wave::before { animation-duration: 4s; }
+
+    @keyframes shimmerWave {
+      0% { left: -150%; }
+      100% { left: 150%; }
+    }
+
+    .card-details {
+      flex: 0 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 2;
+    }
+
+    /* .rank-info {
+      font-size: 12px;
+      color: #FFFFFF;
+      flex: 0 0 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+      z-index: 2;
+    } */
+
+    .user-name, .user-transaction {
+      font-size: 15px;
+      color: white;
+    }
+
+    @keyframes slideInCard {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 </style>
